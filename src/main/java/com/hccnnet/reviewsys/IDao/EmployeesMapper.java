@@ -1,9 +1,10 @@
 package com.hccnnet.reviewsys.IDao;
 
 import com.hccnnet.reviewsys.domain.Employees;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Param;
 
-@Repository
+import java.util.List;
+
 public interface EmployeesMapper {
     int deleteByPrimaryKey(Integer epId);
 
@@ -16,4 +17,8 @@ public interface EmployeesMapper {
     int updateByPrimaryKeySelective(Employees record);
 
     int updateByPrimaryKey(Employees record);
+
+    List<Employees> selectByUserName(@Param("userName") String userName);
+
+    Integer selectIdByName(@Param("epName") String epName);
 }

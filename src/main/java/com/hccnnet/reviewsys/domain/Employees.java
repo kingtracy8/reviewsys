@@ -1,5 +1,7 @@
 package com.hccnnet.reviewsys.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Employees {
@@ -9,10 +11,10 @@ public class Employees {
 
     private String gender;
 
-    private String userame;
+    private String userName;
 
     private String userPassword;
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date birthday;
 
     private String school;
@@ -59,12 +61,12 @@ public class Employees {
         this.gender = gender == null ? null : gender.trim();
     }
 
-    public String getUserame() {
-        return userame;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserame(String userame) {
-        this.userame = userame == null ? null : userame.trim();
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
     public String getUserPassword() {

@@ -90,4 +90,10 @@
       attribute3 = #{attribute3,jdbcType=VARCHAR}
     where d_id = #{dId,jdbcType=INTEGER}
   </update>
+  <select id="selectByDeptName" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select
+    d.d_id
+    from departments d
+    where d.d_dept_name = #{deptName,jdbcType=INTEGER}
+  </select>
 </mapper>

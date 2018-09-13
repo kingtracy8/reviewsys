@@ -1,5 +1,7 @@
 package com.hccnnet.reviewsys.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class WorkReport {
@@ -38,7 +40,7 @@ public class WorkReport {
     private String comments;
 
     private Integer fraction;
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date completeTime;
 
     private String attribute1;

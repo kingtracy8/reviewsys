@@ -1,6 +1,7 @@
 package com.hccnnet.reviewsys.IDao;
 
 import com.hccnnet.reviewsys.domain.Departments;
+import org.apache.ibatis.annotations.Param;
 
 public interface DepartmentsMapper {
     int deleteByPrimaryKey(Integer dId);
@@ -14,4 +15,6 @@ public interface DepartmentsMapper {
     int updateByPrimaryKeySelective(Departments record);
 
     int updateByPrimaryKey(Departments record);
+
+    Integer selectByDeptName(@Param("deptName") String deptName);
 }

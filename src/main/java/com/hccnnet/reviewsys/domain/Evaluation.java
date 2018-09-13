@@ -1,5 +1,7 @@
 package com.hccnnet.reviewsys.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Evaluation {
@@ -58,7 +60,7 @@ public class Evaluation {
     private String t1Review;
 
     private Integer t1Ischeck;
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date t1Checktime;
 
     private Integer t2Id;
@@ -68,7 +70,7 @@ public class Evaluation {
     private String t2Review;
 
     private Integer t2Ischeck;
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date t2Checktime;
 
     private Integer deptLeaderId;
@@ -78,7 +80,7 @@ public class Evaluation {
     private String deptLeaderReview;
 
     private Integer deptLeaderIscheck;
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date deptLeaderChecktime;
 
     private String attribute1;

@@ -528,4 +528,25 @@
       attribute3 = #{attribute3,jdbcType=VARCHAR}
     where el_id = #{elId,jdbcType=INTEGER}
   </update>
+  <select id="selectByTeacherId" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from evaluation e
+    where (
+    e.t1_id = #{eId,jdbcType=INTEGER}
+    OR e.t2_id = #{eId,jdbcType=INTEGER}
+    OR e.dept_leader_id = #{eId,jdbcType=INTEGER}
+    )
+    LIMIT #{start},#{offset}
+  </select>
+  <select id="selectCountByTeacherId" resultType="java.lang.Integer" >
+    select
+    count(e.el_id)
+    from evaluation e
+    where (
+    e.t1_id = #{eId,jdbcType=INTEGER}
+    OR e.t2_id = #{eId,jdbcType=INTEGER}
+    OR e.dept_leader_id = #{eId,jdbcType=INTEGER}
+    )
+  </select>
 </mapper>
