@@ -72,15 +72,16 @@
 //            判断是指导老师1还是指导老师2或者是领导
 //
 //            console.log(jQuery.trim($("#employeeId").text()));
-//            var employeesId = jQuery.trim($("#employeeId").text());
-//
-//            if(data.t1Id== employeesId){
-//                layer.msg("您是指导老师1");
-//            }else if(data.t2Id== employeesId){
-//                layer.msg("您是指导老师2");
-//            }else if(data.deptLeaderId== employeesId){
-//                layer.msg("您是部门领导");
-//            }
+            var employeesId = jQuery.trim($("#employeeId").text());
+
+            if(data.t1Id== employeesId){
+                if(data.t1Ischeck == 1)
+                layer.msg("您已经评阅过该员工，是否继续？");
+            }else if(data.t2Id== employeesId){
+                layer.msg("您是指导老师2");
+            }else if(data.deptLeaderId== employeesId){
+                layer.msg("您是部门领导");
+            }
 
             var employeesId = jQuery.trim($("#employeeId").text());
 

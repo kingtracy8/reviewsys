@@ -238,4 +238,24 @@ FROM
 WHERE
 	e.ep_name = #{epName,jdbcType=VARCHAR}
   </select>
+    <select id="selectAllep" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from employees
+        LIMIT #{start},#{offset}
+    </select>
+    <select id="selectAllCount" resultType="java.lang.Integer">
+       SELECT
+	count(e.ep_id)
+FROM
+	employees e;
+    </select>
+    <select id="selectDeptIdById" resultType="java.lang.Integer">
+        SELECT
+        e.ep_dept
+        FROM
+        employees e
+        WHERE
+	e.ep_id = #{epId,jdbcType=INTEGER};
+    </select>
 </mapper>

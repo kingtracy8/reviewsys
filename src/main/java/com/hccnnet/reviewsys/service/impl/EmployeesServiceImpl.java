@@ -31,4 +31,24 @@ public class EmployeesServiceImpl implements IEmployeesService{
     public Integer selectIdByName(String epName) {
         return employeesMapper.selectIdByName(epName);
     }
+
+    @Override
+    public List<Employees> selectAllep(Integer start, Integer offset) {
+        return employeesMapper.selectAllep(start,offset);
+    }
+
+    @Override
+    public Integer selectAllCount() {
+        return employeesMapper.selectAllCount();
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Employees record) {
+        return employeesMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public Integer selectDeptIdById(Integer epId) {
+        return employeesMapper.selectDeptIdById(epId);
+    }
 }

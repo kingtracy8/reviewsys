@@ -55,7 +55,7 @@
 });
 </script>
 <!--SIGN UP-->
-<h1>Csu Login Form</h1>
+<h1>Welcome</h1>
 <div class="login-form">
     <div class="close"></div>
     <div class="head-info">
@@ -68,10 +68,10 @@
         <img src="images/lg_img/avtar.png"/>
     </div>
     <form action="/reviewsys/platform" method="post">
-        <input type="text" name="userName" class="text" value="Username" onfocus="this.value = '';"
+        <input type="text" name="userName" class="text" value="" onfocus="this.value = '';"
                onblur="if (this.value == '') {this.value = 'Username';}">
         <div class="key">
-            <input type="password" name="userPassword" id="userPassword" value="Password" onfocus="this.value = '';"
+            <input type="password" name="userPassword" id="userPassword" value="" onfocus="this.value = '';"
                    onblur="if (this.value == '') {this.value = 'Password';}" style="margin-bottom:20px">
         </div>
         <div class="signin">

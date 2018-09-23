@@ -6,6 +6,8 @@ import com.hccnnet.reviewsys.service.IWorkReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by trcay on 2018/9/7.
  */
@@ -24,5 +26,15 @@ public class WorkReportService implements IWorkReportService {
     @Override
     public Integer selectCommitDuplicate(int employeeId, int deptId) {
         return workReportMapper.selectCommitDuplicate(employeeId,deptId);
+    }
+
+    @Override
+    public List<WorkReport> selectAllWr(Integer start, Integer offset) {
+        return workReportMapper.selectAllWr(start,offset);
+    }
+
+    @Override
+    public Integer selectAllWrCount() {
+        return workReportMapper.selectAllWrCount();
     }
 }

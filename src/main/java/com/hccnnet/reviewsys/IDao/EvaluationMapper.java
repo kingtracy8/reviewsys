@@ -23,4 +23,8 @@ public interface EvaluationMapper {
     List<Evaluation> selectByTeacherId(@Param("eId") Integer eId,@Param("start") Integer start,@Param("offset") Integer offset);
 
     Integer selectCountByTeacherId(@Param("eId") Integer eId);
+
+    List<Evaluation> selectAllEl(@Param("start") Integer start, @Param("offset") Integer offset);
+
+    Integer selectAllElCount();
 }

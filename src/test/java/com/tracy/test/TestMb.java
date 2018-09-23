@@ -45,9 +45,15 @@ public class TestMb {
 
 
 
-        Evaluation evaluation = iEvaluationService.selectByPrimaryKey(1);
+//        Evaluation evaluation = iEvaluationService.selectByPrimaryKey(1);
 
-        logger.info(JSON.toJSONString(evaluation));
+//        List<Employees> employeesList = iEmployeesService.selectAllep(1,10);
+
+//        int count = iEmployeesService.selectAllCount();
+
+//        iEvaluationService.selectAllEl(0,10);
+
+        logger.info(JSON.toJSONString(iEmployeesService.selectDeptIdById(11)));
 
     }
 

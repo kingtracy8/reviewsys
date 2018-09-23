@@ -38,8 +38,7 @@ public class LoginController {
 
         String name = request.getParameter("userName");
         String pass = request.getParameter("userPassword");
-        //获得表单提交过来的身份
-        String position = request.getParameter("identity");
+
 
         List<Employees> employeesList = employeesService.selectByUserName(name);
 
@@ -55,6 +54,10 @@ public class LoginController {
                     String identity = String.valueOf(employeesList.get(i).getIdentity());
                     request.getSession().setAttribute("identity", identity);
                     request.getSession().setAttribute("employeeId", employeesList.get(i).getEpId());
+                    //用employeeId去查部门id  update by linsong.wei 2018-09-23 18:53:09
+                    int employeeId = employeesList.get(i).getEpId();
+                    int deptId = employeesService.selectDeptIdById(employeeId);
+                    request.getSession().setAttribute("deptId", deptId);
                     return Url;
                 } else {
                     Url = "error";

@@ -19,5 +19,7 @@ public interface IEvaluationService {
 
     int updateByPrimaryKeySelective(Evaluation record);
 
+    List<Evaluation> selectAllEl(Integer start,Integer offset);
 
+    Integer selectAllElCount();
 }

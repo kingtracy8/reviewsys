@@ -30,6 +30,7 @@
     String userName = (String) request.getSession().getAttribute("userName");
     String identity = (String) request.getSession().getAttribute("identity");
     int employeeId = (int) request.getSession().getAttribute("employeeId");
+    int deptId = (int) request.getSession().getAttribute("deptId");
 %>
 
 <div class="layui-layout layui-layout-admin ">
@@ -37,7 +38,7 @@
         <div class="layui-logo">review system</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left ">
-            <li class="layui-nav-item"><a href="../../html/welcome.html" target="ifrbody">控制台</a></li>
+            <li class="layui-nav-item"><a href="../../welcome.jsp" target="ifrbody">控制台</a></li>
             <li class="layui-nav-item"><a href="#">系统管理</a></li>
             <li class="layui-nav-item"><a href="#">
                 <%--<%=identity%>--%>用户
@@ -88,9 +89,10 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">人事部门模块</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="#" target="ifrbody" id="employeesControl">员工信息管理</a></dd>
-                        <dd><a href="#" id="" target="ifrbody">实习报告管理</a></dd>
-                        <dd><a href="#" target="ifrbody" id="auditingControl">评价表管理</a></dd>
+                        <dd><a href="../../epManager.jsp" target="ifrbody" id="employeesControl">员工信息管理</a></dd>
+                        <dd><a href="../../WorkReportManager.jsp" id="WorkReportManager" target="ifrbody">实习报告管理</a></dd>
+                        <dd><a href="../../EvaluationManager.jsp" target="ifrbody" id="EvaluationManager">评价表管理</a></dd>
+                        <dd style="display: none"><a href="javascript:;" id="deptId"><%=deptId%>
                         </a></dd>
                     </dl>
                 </li>
@@ -101,7 +103,7 @@
 
     <div class="layui-body">
 
-        <iframe id="ifrbody" name="ifrbody" src="../../html/welcome.html" scrolling="yes"
+        <iframe id="ifrbody" name="ifrbody" src="../../../welcome.jsp" scrolling="yes"
                 onload="changeFrameHeight()"></iframe>
 
     </div>
@@ -266,6 +268,18 @@
             $("#EditEvaluation").attr('target', 'ifrbody');
             $("#EditEvaluation").attr('href', '../../html/Jurisdiction.html');
         }
+
+        if(jQuery.trim($("#deptId").text()) != "1"){
+            $("#employeesControl").attr('target', 'ifrbody');
+            $("#employeesControl").attr('href', '../../html/Jurisdiction.html');
+
+            $("#WorkReportManager").attr('target', 'ifrbody');
+            $("#WorkReportManager").attr('href', '../../html/Jurisdiction.html');
+
+            $("#EvaluationManager").attr('target', 'ifrbody');
+            $("#EvaluationManager").attr('href', '../../html/Jurisdiction.html');
+        }
+
     });
 
 

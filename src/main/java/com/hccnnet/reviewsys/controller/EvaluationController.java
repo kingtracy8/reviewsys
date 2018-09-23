@@ -97,5 +97,26 @@ public class EvaluationController {
         return map;
     }
 
+    /**
+     * 评价管理表格接口
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = "/tbEvaluation", method = RequestMethod.GET)
+    public @ResponseBody
+    HashMap tbEmployees(HttpServletRequest request, HttpServletResponse response, @RequestParam("page") String page, @RequestParam("limit") String limit) {
+
+        HashMap map = new HashMap();
+        int start = (Integer.valueOf(page)-1)*Integer.valueOf(limit);
+        int offset = Integer.valueOf(limit);
+        List<Evaluation> evaluationList = evaluationService.selectAllEl(start,offset);
+        map.put("code", 0);
+        map.put("msg", "");
+        int count = evaluationService.selectAllElCount();
+        map.put("count",count);
+        map.put("data", evaluationList);
+        return map;
+    }
 
 }

@@ -43,5 +43,15 @@ public class EvaluationService implements IEvaluationService{
         return evaluationMapper.updateByPrimaryKeySelective(record);
     }
 
+    @Override
+    public List<Evaluation> selectAllEl(Integer start, Integer offset) {
+        return evaluationMapper.selectAllEl(start,offset);
+    }
+
+    @Override
+    public Integer selectAllElCount() {
+        return evaluationMapper.selectAllElCount();
+    }
+
 
 }

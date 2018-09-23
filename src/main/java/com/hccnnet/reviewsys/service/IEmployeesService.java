@@ -15,4 +15,12 @@ public interface IEmployeesService {
 
     Integer selectIdByName(String epName);
 
+    List<Employees> selectAllep(Integer start,Integer offset);
+
+    Integer selectAllCount();
+
+    int updateByPrimaryKeySelective(Employees record);
+
+    Integer selectDeptIdById(Integer epId);
+
 }

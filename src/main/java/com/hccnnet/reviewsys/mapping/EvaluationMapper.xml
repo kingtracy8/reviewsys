@@ -549,4 +549,15 @@
     OR e.dept_leader_id = #{eId,jdbcType=INTEGER}
     )
   </select>
+  <select id="selectAllEl" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from evaluation
+    LIMIT #{start},#{offset}
+  </select>
+  <select id="selectAllElCount"  resultType="java.lang.Integer" >
+    select
+    COUNT(el_id)
+    from evaluation
+  </select>
 </mapper>

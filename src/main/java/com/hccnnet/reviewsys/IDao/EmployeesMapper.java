@@ -21,4 +21,10 @@ public interface EmployeesMapper {
     List<Employees> selectByUserName(@Param("userName") String userName);
 
     Integer selectIdByName(@Param("epName") String epName);
+
+    List<Employees> selectAllep(@Param("start") Integer start,@Param("offset") Integer offset);
+
+    Integer selectAllCount();
+
+    Integer selectDeptIdById(Integer epId);
 }

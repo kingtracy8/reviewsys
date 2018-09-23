@@ -1,5 +1,6 @@
 package com.hccnnet.reviewsys.controller;
 
+import com.hccnnet.reviewsys.domain.Employees;
 import com.hccnnet.reviewsys.domain.Evaluation;
 import com.hccnnet.reviewsys.domain.WorkReport;
 import com.hccnnet.reviewsys.service.IDepartmentsService;
@@ -10,14 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by trcay on 2018/9/6.
@@ -101,7 +101,7 @@ public class EmployeesController {
         }
 
 
-        try{
+        try {
 
             //在提交实习报告的时候生成一张导师评价表  9月13日
             Evaluation evaluation = new Evaluation();
@@ -118,16 +118,56 @@ public class EmployeesController {
 
             evaluationService.insertSelective(evaluation);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             flag = 4; //表示生成评价表异常
             map.put("flag", flag);
             return map;
         }
 
 
-
         flag = workReportService.insertSelective(workReport);
 
+        map.put("flag", flag);
+        return map;
+    }
+
+    /**
+     * 员工管理表格接口
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = "/tbEmployees", method = RequestMethod.GET)
+    public @ResponseBody
+    HashMap tbEmployees(HttpServletRequest request, HttpServletResponse response, @RequestParam("page") String page, @RequestParam("limit") String limit) {
+
+        HashMap map = new HashMap();
+        int start = (Integer.valueOf(page)-1)*Integer.valueOf(limit);
+        int offset = Integer.valueOf(limit);
+        List<Employees> employeesList = employeesService.selectAllep(start,offset);
+        map.put("code", 0);
+        map.put("msg", "");
+        int count = employeesService.selectAllCount();
+        map.put("count",count);
+        map.put("data", employeesList);
+        return map;
+
+    }
+
+    @RequestMapping("/UpdateEpSingle")
+    @Transactional(propagation = Propagation.REQUIRED)
+    public @ResponseBody
+    HashMap doUpdateUserSingle(HttpServletRequest request, HttpServletResponse response, @RequestBody Employees employees) {
+
+        HashMap map = new HashMap();
+
+        int flag = 0;
+        try {
+           flag = employeesService.updateByPrimaryKeySelective(employees);
+        } catch (Exception e) {
+            flag = -1;
+            throw new RuntimeException();
+        }
         map.put("flag", flag);
         return map;
     }
