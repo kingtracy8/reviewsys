@@ -4,6 +4,8 @@ import com.hccnnet.reviewsys.domain.Evaluation;
 import com.hccnnet.reviewsys.service.IEvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -72,6 +74,7 @@ public class EvaluationController {
      * @return
      */
     @RequestMapping(value = "/updateReview")
+    @Transactional(propagation = Propagation.REQUIRED)
     public @ResponseBody HashMap doUpdateReview(HttpServletRequest request, HttpServletResponse response, @RequestBody Evaluation evaluation){
 
         HashMap map = new HashMap();
@@ -117,6 +120,22 @@ public class EvaluationController {
         map.put("count",count);
         map.put("data", evaluationList);
         return map;
+    }
+
+    /**
+     * 人事通过部门评价表id查看实习报告详情接口
+     * @param request
+     * @param response
+     * @param wId
+     * @return
+     */
+    @RequestMapping(value = "/checkElById", method = RequestMethod.GET)
+    public
+    String doCheckEl(HttpServletRequest request, HttpServletResponse response, @RequestParam("elId") Integer elId, Model model) {
+
+        Evaluation evaluation = evaluationService.selectByPrimaryKey(elId);
+        model.addAttribute("evaluation",evaluation);
+        return  "elCheck";
     }
 
 }

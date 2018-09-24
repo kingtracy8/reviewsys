@@ -102,7 +102,7 @@
     </thead>
 </table>
 <script type="text/html" id="Toolbar">
-    <a class="layui-btn layui-btn-xs layui-bg-red" lay-event="save">查看</a>
+    <a class="layui-btn layui-btn-xs layui-bg-red" lay-event="check">查看</a>
 </script>
 </body>
 <script>
@@ -112,6 +112,49 @@
             ,laydate = layui.laydate
             , table = layui.table;
 
+
+
+
+        //监听工具条
+        table.on('tool(test)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+
+
+            var data = obj.data //获得当前行数据
+                , layEvent = obj.event; //获得 lay-event 对应的值
+
+
+
+
+            var url = "http://localhost:8080/workReport/checkWrById?wId=" + data.wId;
+
+
+            var index = layer.open({
+                type: 2
+                , title: '查看实习报告'
+                , offset: ['50px', '350px']
+                , area: ['700px', '600px']
+                , shade: 0.4
+                , maxmin: true
+                , content: [url, 'yes']
+                , btn: ['关闭', '全部关闭']
+                , yes: function () {
+                    layer.close(index);
+                }
+                , btn2: function () {
+                    layer.closeAll();
+                }
+                , zIndex: layer.zIndex //重点1
+                , success: function (layero) {
+                    layer.setTop(layero); //重点2
+                }
+            });
+
+
+            layer.iframeAuto(index);    //自适应
+
+
+
+        });
 
 
     });

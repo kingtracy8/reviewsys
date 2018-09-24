@@ -126,6 +126,7 @@
             , upload = layui.upload //上传
             , element = layui.element; //元素操作
 
+       /*
         //公告
         layer.open({
             type: 1
@@ -149,7 +150,7 @@
             content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">welcome！<br><br></div>'
         });
 
-
+*/
         //将日期直接嵌套在指定容器中
         var dateIns = laydate.render({
             elem: '#laydateDemo'

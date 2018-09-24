@@ -15,11 +15,11 @@
         $(function () {
 
             $.ajax({
-                url: "http://localhost:8080/evaluation/evaluationInfoById?elId=" + GetQueryString("elId"),       //去请求有过滤的电脑列表，只传入一个id
-                type: "GET",
-                dataType: 'json',
-                contentType: 'application/json;charset=UTF-8', //contentType很重要
-                success: function (result) {
+                    url: "http://localhost:8080/evaluation/evaluationInfoById?elId=" + GetQueryString("elId"),       //去请求有过滤的电脑列表，只传入一个id
+                    type: "GET",
+                    dataType: 'json',
+                    contentType: 'application/json;charset=UTF-8', //contentType很重要
+                    success: function (result) {
 
                     $("#deptName").val(result.deptName);
                     $("#eName").val(result.eName);

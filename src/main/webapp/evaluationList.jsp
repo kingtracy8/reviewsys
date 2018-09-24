@@ -31,7 +31,7 @@
         <th lay-data="{field:'eName',width:80}">实习生</th>
         <th lay-data="{field:'t1Name', width:130}">指导老师1</th>
         <th lay-data="{field:'t1Ischeck', width:120}">是否已评阅</th>
-        <th lay-data="{field:'t2Name', width:100}">指导老师2</th>
+        <th lay-data="{field:'t2Name', width:130}">指导老师2</th>
         <th lay-data="{field:'t2Ischeck',width:120}">是否已评阅</th>
         <th lay-data="{field:'deptLeaderName', width:120}">部门领导</th>
         <th lay-data="{field:'deptLeaderIscheck', width:170}">部门领导是否已评阅</th>

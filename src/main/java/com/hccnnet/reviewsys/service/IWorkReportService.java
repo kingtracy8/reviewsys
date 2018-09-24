@@ -16,4 +16,6 @@ public interface IWorkReportService {
     List<WorkReport> selectAllWr(Integer start,Integer offset);
 
     Integer selectAllWrCount();
+
+    WorkReport selectByPrimaryKey(Integer wId);
 }

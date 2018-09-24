@@ -37,4 +37,9 @@ public class WorkReportService implements IWorkReportService {
     public Integer selectAllWrCount() {
         return workReportMapper.selectAllWrCount();
     }
+
+    @Override
+    public WorkReport selectByPrimaryKey(Integer wId) {
+        return workReportMapper.selectByPrimaryKey(wId);
+    }
 }
